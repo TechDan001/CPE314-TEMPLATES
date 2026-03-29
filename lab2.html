@@ -2,31 +2,83 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Advanced HTML</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advance HTML</title>
 </head>
 <body>
+    <nav>
+        <a href="#">Home</a> | <a href="#">Profile</a> | <a href="#">Contact</a>
+    </nav>
     <header>
-        <h1>Student Profile</h1>
+        <h1>Student Profile 22/EG/CO/1741</h1>
     </header>
-    <section>
-        <img src="https://via.placeholder.com/150" alt="Profile Picture">
-        <table border="1">
-            <tr>
-                <th>Name</th>
-                <th>Age</th>
-                <th>Major</th>
-            </tr>
-            <tr>
-                <td>John Doe</td>
-                <td>21</td>
-                <td>Computer Science</td>
-            </tr>
-        </table>
+    <article>
+        <section>
+            <img src= "c:\Users\TECHDAN\Downloads\ChatGPT Image Nov 8, 2025, 04_05_35 PM.png" alt="Profile Picture" width="150">
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Major</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>John Doe</td>
+                        <td>21</td>
+                        <td>Computer science</td>
+                    </tr>
+                    <tr>
+                        <td>Tech Dan</td>
+                        <td>22</td>
+                        <td>Computer Engineering</td>
+                    </tr>
+                    <tr>
+                        <td>Jerry Gold</td>
+                        <td>18</td>
+                        <td>Graphic Design</td>
+                    </tr>
+                    <tr>
+                        <td>OB Sam</td>
+                        <td>23</td>
+                        <td>QA Anaylsts</td>
+                    </tr>
+                </tbody>
+        </table>    
     </section>
-    <form>
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name"><br>
-        <input type="submit" value="Submit">
-    </form>
+    <section>
+            <h3>Registration Form</h3>
+            <form action="#" method="POST">
+                <p>
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </p>
+
+                <p>
+                    Gender:
+                    <input type="radio" id="male" name="gender" value="male">
+                    <label for="male">Male</label>
+                    <input type="radio" id="female" name="gender" value="female">
+                    <label for="female">Female</label>
+                </p>
+
+                <p>
+                    <input type="checkbox" id="subscribe" name="subscribe">
+                    <label for="subscribe">Subscribe to newsletter</label>
+                </p>
+
+                <p>
+                    <label for="comments">Comments:</label><br>
+                    <textarea id="comments" name="comments" rows="4" cols="30"></textarea>
+                </p>
+
+                <input type="submit" value="Submit">
+            </form>
+        </section>
+    </article>
+    <footer>
+        <p>&copy; 2026 Student Portal. All rights reserved.</p>
+    </footer>
 </body>
 </html>
