@@ -2,11 +2,89 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>CSS Basics</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 3: CSS Basics</title>
     <link rel="stylesheet" href="styles.css">
+    
+    <style>
+          h1 {
+            font-style: italic;
+            text-decoration: underline;
+        }
+        
+        /* Element Selector */
+        body {
+            background-color: #feb47b; /* Alice Blue */
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 40px;
+        }
+
+        /* ID Selector (Objective: Unique element styling) */
+        #main-header {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 2px solid #2c3e50;
+            padding-bottom: 10px;
+        }
+
+        /* Class Selector (Objective: Reusable styling) */
+        .highlight-box {
+            background-color: #ffffff;
+            border-left: 5px solid #3498db;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .text-important {
+            color: #e47c3c;
+            font-weight: bold;
+        }
+
+        /* Objective: Styling Lists */
+        ul {
+            background: #ecf0f1;
+            padding: 20px 40px;
+            border-radius: 8px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        /* Objective: Link Styling (Pseudo-classes) */
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            color: #2980b9;
+        }
+    </style>
 </head>
 <body>
-    <h1 style="color: blue;">Styled Heading</h1>
-    <p>This paragraph uses external CSS.</p>
+
+    <h1 id="main-header">Styled Heading 22/EG/CO/1741</h1>
+
+    <div class="highlight-box">
+        <h2>Core Objectives</h2>
+        <p>In this lab, we are practicing how to use <span class="text-important">Selectors</span> to apply styles to our HTML elements. This specific file uses <strong>Internal CSS</strong>.</p>
+    </div>
+
+    <h3>Things Learned Today:</h3>
+    <ul>
+        <li>How to use <strong>ID selectors</strong> for unique elements.</li>
+        <li>How to use <strong>Class selectors</strong> for multiple elements.</li>
+        <li>Basic <strong>Box Model</strong> properties like padding, margin, and borders.</li>
+        <li>Changing background colors and font properties.</li>
+    </ul>
+
+    <p>For more information on CSS, you can visit the 
+        <a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank">MDN Web Docs</a>.
+    </p>
+
 </body>
 </html>
