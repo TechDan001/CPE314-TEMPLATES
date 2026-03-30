@@ -2,14 +2,85 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>CSS Layout</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 4: CSS Grid Layout</title>
+    
+    <style>
+        /* Base Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f7f693;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        /* Activity 1: CSS Grid Layout */
+        .container {
+            display: grid;
+            /* Creates 3 columns of equal width */
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* Activity 2: Item Styling and Hover Effects */
+        .item {
+            background-color: #3498db;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        /* Hover effect requested in Activity 2 */
+        .item:hover {
+            background-color: #2980b9;
+            transform: translateY(-5px);
+            cursor: pointer;
+        }
+
+        /* Activity 3 & 4: Responsive Design with Media Queries */
+        /* For tablets and smaller screens (under 768px) */
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: repeat(2, 1fr); /* 2 columns */
+            }
+        }
+
+        /* For mobile phones (under 500px) */
+        @media (max-width: 500px) {
+            .container {
+                grid-template-columns: 1fr; /* 1 column (stacks items) */
+            }
+            
+            .item {
+                padding: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
+
+    <h1>Layout and styling with CSS 22/EG/CO/1741</h1>
+
     <div class="container">
         <div class="item">Item 1</div>
         <div class="item">Item 2</div>
         <div class="item">Item 3</div>
+        <div class="item">Item 4</div>
+        <div class="item">Item 5</div>
+        <div class="item">Item 6</div>
     </div>
+
 </body>
 </html>
