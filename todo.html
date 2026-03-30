@@ -2,14 +2,160 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To-Do List</title>
-    <link rel="stylesheet" href="todo.css">
+    
+    <style>
+        /* Base Styles */
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background-color: #1d5ec0; 
+            display: flex; 
+            justify-content: center; 
+            padding: 40px 20px; 
+        }
+
+        .app-container { 
+            background: rgba(138, 179, 44, 0.719); 
+            padding: 25px; 
+            border-radius: 12px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+            width: 100%; 
+            max-width: 400px;
+        }
+
+        h1 { color: #333; margin-top: 0; }
+
+        .input-group { display: flex; gap: 10px; margin-bottom: 20px; }
+
+        input[type="text"] { 
+            flex-grow: 1; 
+            padding: 10px; 
+            border: 1px solid #ddd; 
+            border-radius: 4px; 
+        }
+
+        button#add-btn { 
+            padding: 10px 15px; 
+            background-color: #28a745; 
+            color: white; 
+            border: none; 
+            border-radius: 4px; 
+            cursor: pointer; 
+        }
+
+        /* List Styles */
+        ul#list { list-style-type: none; padding: 0; }
+
+        li { 
+            margin: 8px 0; 
+            padding: 12px; 
+            background: #f9f9f9; 
+            border: 1px solid #eee;
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            border-radius: 6px;
+            transition: 0.2s;
+        }
+
+        /* Activity 2: Strikethrough style */
+        .completed span { 
+            text-decoration: line-through; 
+            color: #888; 
+        }
+
+        /* Activity 1: Delete Button Style */
+        .delete-btn { 
+            background: #dc3545; 
+            color: white; 
+            border: none; 
+            padding: 5px 10px; 
+            border-radius: 4px; 
+            cursor: pointer; 
+        }
+
+        /* Activity 4: Media Queries for Mobile */
+        @media (max-width: 600px) {
+            .app-container { max-width: 100%; padding: 15px; }
+            h1 { font-size: 1.5rem; }
+        }
+    </style>
 </head>
 <body>
-    <h1>To-Do List</h1>
-    <input type="text" id="task" placeholder="Add task">
-    <button onclick="addTask()">Add</button>
-    <ul id="list"></ul>
-    <script src="todo.js"></script>
+
+    <div class="app-container">
+        <h1>To-Do List 22/EG/CO/1741</h1>
+        <div class="input-group">
+            <input type="text" id="taskInput" placeholder="What needs to be done?">
+            <button id="add-btn" onclick="addTask()">Add Task</button>
+        </div>
+        <ul id="list"></ul>
+    </div>
+
+    <script>
+        // Activity 3: Load tasks from Local Storage when page opens
+        document.addEventListener("DOMContentLoaded", loadTasks);
+
+        function addTask() {
+            // Activity 5 DEBUG NOTE: If you change "taskInput" to "wrongID", the app breaks.
+            const input = document.getElementById("taskInput");
+            const taskValue = input.value.trim();
+
+            if (taskValue === "") {
+                alert("Please enter a task!");
+                return;
+            }
+
+            renderTask(taskValue);
+            saveTaskToLocal(taskValue);
+            input.value = ""; // Clear input
+        }
+
+        function renderTask(taskValue) {
+            const ul = document.getElementById("list");
+            const li = document.createElement("li");
+
+            // Create text span
+            const textSpan = document.createElement("span");
+            textSpan.innerText = taskValue;
+            
+            // Activity 2: Click text to toggle completion
+            textSpan.onclick = function() {
+                this.parentElement.classList.toggle("completed");
+            };
+
+            // Activity 1: Add delete button
+            const delBtn = document.createElement("button");
+            delBtn.innerText = "Delete";
+            delBtn.classList.add("delete-btn");
+            delBtn.onclick = function() {
+                this.parentElement.remove();
+                removeTaskFromLocal(taskValue);
+            };
+
+            li.appendChild(textSpan);
+            li.appendChild(delBtn);
+            ul.appendChild(li);
+        }
+
+        // --- Activity 3: Local Storage Persistence ---
+        function saveTaskToLocal(task) {
+            let tasks = localStorage.getItem("myTasks") ? JSON.parse(localStorage.getItem("myTasks")) : [];
+            tasks.push(task);
+            localStorage.setItem("myTasks", JSON.stringify(tasks));
+        }
+
+        function loadTasks() {
+            let tasks = localStorage.getItem("myTasks") ? JSON.parse(localStorage.getItem("myTasks")) : [];
+            tasks.forEach(task => renderTask(task));
+        }
+
+        function removeTaskFromLocal(taskToRemove) {
+            let tasks = JSON.parse(localStorage.getItem("myTasks"));
+            const updatedTasks = tasks.filter(t => t !== taskToRemove);
+            localStorage.setItem("myTasks", JSON.stringify(updatedTasks));
+        }
+    </script>
 </body>
 </html>
