@@ -2,10 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>JS Basics</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 5: JS Basics</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; line-height: 1.6; }
+        .output-note { color: #555; font-style: italic; border-left: 3px solid #ccc; padding-left: 10px; }
+    </style>
 </head>
 <body>
+
+    <h1>JavaScript Basics 22/EG/CO/1741</h1>
+    <p class="output-note">Check the <strong>Browser Console</strong> (F12) and watch for <strong>Alert Boxes</strong> to see the code in action.</p>
+
     <script>
+        // --- Sample Code from Image ---
         let name = "Alice";
         console.log("Hello, " + name);
 
@@ -13,6 +23,46 @@
             alert("Welcome, " + user);
         }
         greet("Bob");
+
+        // --- Activity 1: Variables and Console Logging ---
+        let age = 21;
+        let major = "Information Technology";
+        console.log("Activity 1 - Age: " + age);
+        console.log("Activity 1 - Major: " + major);
+
+        // --- Activity 2: Function for Calculation ---
+        function calculateSum(num1, num2) {
+            let sum = num1 + num2;
+            alert("Activity 2: The sum of " + num1 + " and " + num2 + " is " + sum);
+        }
+        calculateSum(15, 25); // Testing with two numbers
+
+        // --- Activity 3: Control Structures (If-Else) ---
+        // Using prompt to get user input
+        let userInput = prompt("Activity 3: Enter a number to check if it's Even or Odd:");
+        let number = parseInt(userInput);
+
+        if (!isNaN(number)) { // Check if input is a valid number
+            if (number % 2 === 0) {
+                alert(number + " is an Even number.");
+            } else {
+                alert(number + " is an Odd number.");
+            }
+        } else {
+            alert("That wasn't a valid number!");
+        }
+
+        // --- Activity 4: Arrays and Loops ---
+        let fruits = ["Apple", "Banana", "Orange", "Mango", "Grapes"];
+        console.log("Activity 4 - Fruit List:");
+        
+        for (let i = 0; i < fruits.length; i++) {
+            console.log("Fruit " + (i + 1) + ": " + fruits[i]);
+        }
+
+        // --- Activity 5: Moving to external file ---
+        // Note: Since this is a "Combined" file, the code is internal. 
+        // In a real project, you'd cut this <script> content and paste it into 'script.js'.
     </script>
 </body>
 </html>
