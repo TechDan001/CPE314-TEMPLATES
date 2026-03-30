@@ -2,15 +2,110 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DOM Manipulation</title>
+    <style>
+        body { font-family: sans-serif; padding: 30px; line-height: 1.6; background-color: #f9f9f9; }
+        .container { max-width: 600px; margin: auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        
+        /* Activity 3: Class for toggling visibility */
+        .hidden { display: none; }
+        
+        .box { border: 1px solid #ddd; padding: 15px; margin-top: 15px; border-radius: 5px; background: #fff; }
+        button { cursor: pointer; padding: 8px 15px; margin: 5px 0; background-color: #007bff; color: white; border: none; border-radius: 4px; }
+        button:hover { background-color: #0056b3; }
+        input { padding: 8px; width: 70%; border: 1px solid #ccc; border-radius: 4px; }
+    </style>
 </head>
 <body>
-    <h1 id="title">Original Title</h1>
+
+<div class="container">
+    <h1 id="title">Original Title 22/EG/CO/1741</h1>
     <button onclick="changeTitle()">Change Title</button>
-    <script>
-        function changeTitle() {
-            document.getElementById("title").innerHTML = "New Title!";
+
+    <hr>
+
+    <p id="my-para">I am a paragraph that can change color and disappear!</p>
+    <button onclick="modifyParagraph()">Toggle Visibility & Change Color</button>
+
+    <hr>
+
+    <h3>My Fruit List</h3>
+    <ul id="fruit-list">
+        <li>Apple</li>
+        <li>Banana</li>
+    </ul>
+    <button onclick="addItem()">Add Dynamic Item</button>
+
+    <hr>
+
+    <h3>Form Input Display</h3>
+    <input type="text" id="userInput" placeholder="Type something here...">
+    <button onclick="displayInput()">Display Text</button>
+    <div id="displayArea" class="box">Result will show here.</div>
+
+    <hr>
+
+    <h3>Error Test</h3>
+    <button onclick="handleError()">Try to Find Ghost Element</button>
+</div>
+
+<script>
+    // Sample Code: Basic ID selection
+    function changeTitle() {
+        document.getElementById("title").innerHTML = "DOM Mastered!";
+    }
+
+    // Activity 1: Change text color
+    // Activity 3: Use querySelector to toggle visibility
+    function modifyParagraph() {
+        const para = document.querySelector("#my-para");
+        
+        // Changing the style property (Activity 1)
+        para.style.color = "crimson";
+        para.style.fontWeight = "bold";
+        
+        // Toggling a class (Activity 3)
+        para.classList.toggle("hidden");
+    }
+
+    // Activity 2: Create a new list item dynamically
+    function addItem() {
+        const ul = document.getElementById("fruit-list");
+        const li = document.createElement("li"); // Create new tag
+        li.innerHTML = "New Mango 🥭"; // Set content
+        ul.appendChild(li); // Put it inside the UL
+    }
+
+    // Activity 4: Fetch input from form and display it
+    function displayInput() {
+        const inputVal = document.getElementById("userInput").value;
+        const displayDiv = document.getElementById("displayArea");
+        
+        if (inputVal === "") {
+            displayDiv.innerHTML = "Please type something first!";
+        } else {
+            displayDiv.innerHTML = "<strong>You typed:</strong> " + inputVal;
         }
-    </script>
+    }
+
+    // Activity 5: Handle errors (Try/Catch)
+    function handleError() {
+        try {
+            // Intentionally searching for an ID that doesn't exist
+            const ghost = document.getElementById("non-existent-id");
+            
+            if (!ghost) {
+                throw new Error("Element with ID 'non-existent-id' was not found!");
+            }
+            
+            ghost.innerHTML = "Hello";
+        } catch (err) {
+            console.error("Debug log: " + err.message);
+            alert("Error Caught: Check the console for the error message!");
+        }
+    }
+</script>
+
 </body>
 </html>
